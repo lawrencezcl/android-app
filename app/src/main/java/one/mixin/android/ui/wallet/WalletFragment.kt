@@ -95,7 +95,7 @@ class WalletFragment : BaseFragment(), AssetAdapter.AssetsListener {
                     .map { PieView.PieItem(it.symbol, (it.usd() / totalUSD).toFloat()) }
                 if (list.isNotEmpty()) {
                     header.pie_item_container.removeAllViews()
-                    Collections.sort(list, { o1, o2 -> ((o2.percent - o1.percent) * 100).toInt() })
+                    Collections.sort(list) { o1, o2 -> ((o2.percent - o1.percent) * 100).toInt() }
                     context?.mainThreadDelayed({
                         header.pie_view.setPieItem(list, !animated)
                         animated = true
